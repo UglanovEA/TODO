@@ -1,6 +1,6 @@
 const inputElement = document.getElementById("input");
 const listElement = document.getElementById("list");
-const todoList = [];
+let todoList = [];
 
 inputElement.addEventListener("keydown", (event) => {
   if (event.key === "Enter" || event.keyCode === 13) {
@@ -52,16 +52,30 @@ function updateView() {
     buttonDoneElement.type = "button"; //назначили тип
     buttonDoneElement.className = "btn btn-outline-primary"; //назначили класс
     buttonDoneElement.innerText = "Done"; // дали название
+    buttonDoneElement.style = "float: right";
 
     const buttonRemoveElement = document.createElement("button"); //создали button элемент
     divElement.append(buttonRemoveElement); //добавили элемент
     buttonRemoveElement.type = "button"; //назначили тип
     buttonRemoveElement.className = "btn btn-outline-danger"; //назначили класс
     buttonRemoveElement.innerText = "Remove"; // дали название
+    buttonRemoveElement.style = "float: right; margin-right: 10px;";
 
     buttonDoneElement.addEventListener("click", () => {
       todoItem.done = !todoItem.done; //меняем событие на противоположное
       updateView(); //обновляем вид
+    });
+
+    checkboxElement.addEventListener("change", () => {
+      todoItem.selected = checkboxElement.checked;
+    });
+
+    buttonRemoveElement.addEventListener("click", () => {
+      todoList = todoList.filter(
+        //удаляем значения по кнопке remove
+        (currentTodoItem) => currentTodoItem !== todoItem
+      );
+      updateView();
     });
   }
 }
@@ -70,10 +84,33 @@ document.getElementById("doneAction").addEventListener("click", () => {
   for (const todoItem of todoList) {
     //перебираем элементы массива
     if (todoItem.selected) {
-      todoItem.done = true;
+      //если элемент массива выбран
+      todoItem.done = true; //то меняем статус на сделано - true
+      todoItem.selected = false; // убираем галочки после группового выбора
     }
+  }
+  updateView();
+});
 
-    todoItem.selected = false;
+document.getElementById("restoreAction").addEventListener("click", () => {
+  for (const todoItem of todoList) {
+    if (todoItem.selected) {
+      todoItem.done = false;
+      todoItem.selected = false;
+    }
+  }
+  updateView();
+});
+
+document.getElementById("removeAction").addEventListener("click", () => {
+  todoList = todoList.filter((todoItem) => !todoItem.selected); //делаем фильтрацию, выбранные элементы удаляем
+  updateView();
+});
+
+document.getElementById("selectAllAction").addEventListener("click", () => {
+  for (const todoItem of todoList) {
+    //кнопка проходит по всему циклу,  и делает все элементы выделеными
+    todoItem.selected = true;
   }
 
   updateView();
