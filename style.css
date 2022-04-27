@@ -52,6 +52,7 @@ body {
   margin-bottom: 50px;
 }
 .todo__input {
+  width: 100%;
   flex: 1 1 auto;
   background: #e7e0e0;
   color: #212121;
@@ -61,7 +62,7 @@ body {
   padding-left: 10px;
 }
 .todo__icon {
-  width: 50px;
+  flex: 0 0 50px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -129,4 +130,19 @@ body {
   text-decoration: line-through;
   opacity: 0.7;
   transition: all 0.5s linear;
+}
+@media screen and (max-width: 600px) {
+  .todo__wrapper {
+    width: 100%;
+    padding: 10px;
+  }
+  .todo__header {
+    font-size: 24px;
+  }
+  .todo__body {
+    margin-bottom: 40px;
+  }
+  .todo__input {
+    font-size: 18px;
+  }
 }
