@@ -1,66 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zxx">
   <head>
     <meta charset="UTF-8" />
-    <title>ToDo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
       rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
-      integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
-      crossorigin="anonymous"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css"
+      rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
+    <title>ToDo</title>
   </head>
   <body>
-    <div class="container">
-      <div class="todo">
-        <div class="todo-header">
-          <h1 class="todo__title">Todo application</h1>
+    <div id="todo" class="todo__wrapper">
+      <div class="todo__header">
+        <h1>Add Todo List</h1>
+      </div>
+      <div class="todo__body">
+        <input class="todo__input" type="text" placeholder="Add Task..." />
+        <div class="todo__icon icon-add">
+          <i class="ri-add-line"></i>
         </div>
-        <div class="todo-body">
-          <div class="input-group" id="actionPanel1">
-            <div class="input-group-prepend">
-              <span id="selectAllAction">
-                <button class="btn btn-outline-primary" type="button">
-                  Select all
-                </button>
-              </span>
-            </div>
-            <input type="text" class="form-control" id="input" />
-          </div>
-          <div id="actionPanel2">
-            <div class="btn-group btn-block">
-              <button type="button" class="btn btn-success" id="doneAction">
-                Done
-              </button>
-              <button type="button" class="btn btn-info" id="restoreAction">
-                Restore
-              </button>
-              <button type="button" class="btn btn-danger" id="removeAction">
-                Remove
-              </button>
-            </div>
-          </div>
+        <div class="todo__icon icon-delete" onclick="deleteAllElements()">
+          <i class="ri-delete-bin-line"></i>
         </div>
-        <ul class="list-group list-group-flush" id="list"></ul>
       </div>
     </div>
-
-    <script
-      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
-      integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
-      integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
-      crossorigin="anonymous"
-    ></script>
     <script src="main.js"></script>
   </body>
 </html>
